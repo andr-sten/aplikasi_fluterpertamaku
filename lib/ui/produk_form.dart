@@ -1,4 +1,4 @@
-import 'package:aplikasi_flutter_pertamaku/ui/produk_detail.dart';
+import 'package:aplikasi_flutter_pertamaaku/ui/produk_detail.dart';
 import 'package:flutter/material.dart';
 
 class ProdukForm extends StatefulWidget {
@@ -16,16 +16,14 @@ class _ProdukFormState extends State<ProdukForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Form Produk'),
-      ),
+      appBar: AppBar(title: const Text('Form Produk')),
       body: SingleChildScrollView(
         child: Column(
           children: [
             _textboxKodeProduk(),
             _textboxNamaProduk(),
             _textboxHargaProduk(),
-            _tombolSimpan()
+            _tombolSimpan(),
           ],
         ),
       ),
@@ -59,15 +57,18 @@ class _ProdukFormState extends State<ProdukForm> {
         String kodeProduk = _kodeProdukTextboxController.text;
         String namaProduk = _namaProdukTextboxController.text;
         int harga = int.parse(
-            _hargaProdukTextboxController.text); //parsing dari String ke int
+          _hargaProdukTextboxController.text,
+        ); //parsing dari String ke int
         // pindah ke halaman Produk Detail dan mengirim data
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ProdukDetail(
-            kodeProduk: kodeProduk,
-            namaProduk: namaProduk,
-            harga: harga,
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ProdukDetail(
+              kodeProduk: kodeProduk,
+              namaProduk: namaProduk,
+              harga: harga,
+            ),
           ),
-        ));
+        );
       },
       child: const Text('Simpan'),
     );
